@@ -1,0 +1,362 @@
+name: SmartPark
+context:
+  variables:
+    iResult: "nlpresult"
+    locationType: "string"
+    vehicleTypeString: "string"
+    location: "string"
+    vehicleType: "VEHICLE_TYPE"
+    duration: "string"
+    carParkIssue: "string"
+    carNumber: "string"
+    picture: "string"
+    confirmYesNo: "string"
+    confirmYesNoNewSlot: "string"
+    ParkingDetails: "string"
+    selectedDate: "string"
+    newcheckInDate: "string"
+    rb: "resourcebundle"
+    selectedParkTitle: "string" 
+    selectedParkDesc: "string"
+    xCoordinate: "string" #nearby var
+    yCoordinate: "string" #nearby var
+    checkIn: "string"
+    checkOut: "string"
+states:
+  intent:
+    component: "System.Intent"
+    properties:
+      variable: "iResult"
+    transitions:
+      actions:
+        unresolvedIntent: "unresolved"
+        getParking: "askCarNum"
+        wrongParkingComplaint: "raiseQuery"
+        greeting: "greet"
+
+#---------------GREETING---------------
+  greet:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: false
+      keepTurn: true
+      metadata: 
+        responseItems:         
+        - type: "attachment"
+          attachmentType: "image" 
+          #attachmentTitle: "Oracle logo" 
+          attachmentUrl: "https://i.pinimg.com/originals/f3/78/c7/f378c74976082e00b55ef2ea68e7808b.gif"            
+          footerText: "Hello there!!!"
+    transitions:
+      actions:
+        textReceived: "intent"
+      next: "afterGreetMsg"
+  afterGreetMsg:
+    component: "System.Output"
+    properties:
+      text: "With me, you can book your parking spot on the fly and also raise complaints related to ill-mannered parking ;)"
+    transitions:
+      return: "done"      
+#---------------WRONG PARKING COMPLAINT---------------
+  raiseQuery:
+    component: "System.List"
+    properties:
+      options: "Is any other car parked in your booked slot?, A car is parked in a no parking zone?"
+      prompt: "Sure I will help you, Can you please tell me a little more about your query"
+      variable: "carParkIssue"
+    transitions: {}
+      #next: "pictureUpload"
+  pictureUpload:      
+    component: "System.Text"
+    properties:
+      prompt: "Ok I acknowledge your issue, Can you please upload a picture of the wrongly parked car?"
+      variable: "picture"
+      nlpResultVariable: "iResult"
+      maxPrompts: 3
+    transitions:
+        next: "askCarNumber"
+  askCarNumber:
+    component: "System.Text"
+    properties:
+      prompt: "One last question, Please enter the car number of the wrongly parked car?"
+      variable: "carNumber"
+      nlpResultVariable: "iResult"
+      maxPrompts: 3
+    transitions:
+        next: "switchWrongComplaining"
+  switchWrongComplaining:
+    component: "System.Switch"
+    properties:
+      variable: "carParkIssue"
+      values:
+      - "Is any other car parked in your booked slot?"
+      - "A car is parked in a no parking zone?"
+    transitions:
+      actions:
+        Is any other car parked in your booked slot?: "wrongParkingMsg"
+        A car is parked in a no parking zone?: "noParkingMsg"
+        NONE: "unresolved"        
+  noParkingMsg:
+    component: "System.Output"
+    properties:
+      text: "We have noted your complaint against car number ${carNumber.value}. Thank you for making our city better"
+    transitions:
+      return: "done"
+  wrongParkingMsg:
+    component: "System.Output"
+    properties:
+      text: "We have noted your complaint against car number ${carNumber.value}"
+      keepTurn: true
+    transitions: {} 
+  confirmNewBookingSlot:
+    component: "System.List"
+    properties:
+      options: "Yes, No"
+      prompt: "Should I book a different slot for you?"
+      variable: "confirmYesNoNewSlot"  
+
+  switchYesNoNewSlot:
+    component: "System.Switch"
+    properties:
+      variable: "confirmYesNoNewSlot"
+      values:
+      - "Yes"
+      - "No"
+    transitions:
+      actions:
+        Yes: "newParkingSpaceBooked"
+        No: "thanksMessage"
+        NONE: "unresolved"       
+  newParkingSpaceBooked:
+    component: "System.Output"
+    properties:
+      text: "Address: BLK 203/206, 213/222 YISHUN STREET 21 \nCar Park Number: Y14 \nCar Park Type: SURFACE CAR PARK \nType of Parking System: ELECTRONIC PARKING \nSlot No.: Storey No. 6" 
+    transitions:
+      return: "done"    
+#---------------BOOK PARKING SPACE---------------
+  askCarNum:
+    component: "System.Text"
+    properties:
+     prompt: "Sure I will help you, Please help me with you car number?"
+     variable: "carNumber"
+    transitions:
+      next: "vehicleTypeList"
+  vehicleTypeList:
+    component: "System.CommonResponse"
+    properties:
+      variable: "vehicleTypeString"
+      nlpResultVariable: "iResult"
+      maxPrompts: 2
+      metadata:
+        responseItems:
+        - type: "text"
+          text: "Awesome! Please help me with your type of car?"
+          separateBubbles: true
+          actions:
+          - label: "${enumValue}"
+            type: "postback"
+            payload:
+              action: "vehicleSelected"
+              variables:
+                vehicleTypeString: "${enumValue}"
+            iteratorVariable: "vehicleType.type.enumValues"         
+      processUserMessage: true
+    transitions:
+      actions:
+        textReceived: "intent"
+        unexpectedAction: "unresolved"   
+        vehicleSelected: "askLocation"
+
+  askLocation:
+    component: "System.CommonResponse"
+    properties:
+      variable: "location"
+      metadata:
+        responseItems:
+          - text: "Ok Great, That helps! Also tell me where would you like to park you car?"
+            type: "text"
+            name: "What location"
+            separateBubbles: true
+        globalActions:
+          #- label: "Nearby"
+          #  type: "location"
+          #  name: "SendLocation"   
+          - label: "Nearby"
+            type: "postback"
+            payload: 
+              action: "showNearby"  
+          - label: "Other Location"
+            type: "postback"
+            payload: 
+              action: "showOtherLocation" 
+      processUserMessage: true
+    transitions:
+      actions:
+        cancel: "intent"
+        showNearby: "askCheckIn"
+        showOtherLocation: "askOtherLocation"
+      #next: "askCheckIn"
+  askOtherLocation:
+    component: "System.Text"
+    properties:
+     prompt: "Ok. I can book a parking space for some other location too. Please enter the location name"
+     variable: "location"
+    transitions:
+      next: "askCheckIn"
+  askCheckIn1:
+    component: "System.Text"
+    properties:
+     prompt: "Awesome! Please help me with the time frame for which you need the parking space?"
+     variable: "duration"
+    transitions:
+      next: "askCheckIn"
+  askCheckIn:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: true  
+      cancelPolicy: "immediate"
+      metadata: 
+        responseItems:                  
+        - type: "text"  
+          text: "${rb('CALENDAR')}" 
+    transitions:
+      actions: 
+        submitDate: "askCheckOut"
+  askCheckOut:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: true  
+      cancelPolicy: "immediate"
+      metadata: 
+        responseItems:                  
+        - type: "text"  
+          text: "${rb('CALENDAR2')}" 
+    transitions:
+      actions: 
+        submitDate: "waitMessage"      
+
+  waitMessage:
+    component: "System.Output"
+    properties:
+      text: "Please wait while I fetch a parking space."
+      keepTurn: true
+    transitions:
+      next: "callBackend"
+#---------CUSTOM COMPONENT-----------------
+  callBackend: 
+    component: "getNear"
+    properties: 
+      xCoordinate: "28876"
+      yCoordinate: "38636"
+      carType: "${vehicleTypeString.value}"
+      placeName: "${location.value}"
+    transitions:
+      actions:
+        BookingSuccess: "displayParkingDetails"
+        BookingFailure: "bookingFail"
+#--------------------------
+  bookingFail:
+    component: "System.Output"
+    properties:
+      text: "Sorry! I cannot find any parking space for this location"
+    transitions:
+      return: "done"  
+      
+  displayParkingDetails:
+    component: "System.CommonResponse"
+    properties:
+      metadata:
+        responseItems:
+        - type: "text"
+          text: "Below are some of the parking options that I found for you. Go ahead and select to book your space"
+          separateBubbles: true
+        - type: "cards"
+          cardLayout: "horizontal"     
+          cards:
+          - title: "${ParkingDetails.title}"
+            description: "${ParkingDetails.description}"
+            imageUrl: "https://mechsol.co.in/wp-content/uploads/2019/05/multi-level-car-parking.png"
+            iteratorVariable: "ParkingDetails"
+            actions:
+              - label: "Select"
+                type: "postback"
+                payload:
+                  action: "selectedParkSpace"
+                  variables:
+                    selectedParkTitle: "${ParkingDetails.title}"
+                    selectedParkDesc: "${ParkingDetails.description}"
+      keepTurn: true
+      processUserMessage: true
+      #translate: true
+    transitions:
+      actions:
+        textReceived: "intent"
+        selectedParkSpace: "confirmParkingSpaceBooking"
+  confirmParkingSpaceBooking:
+    component: "System.List"
+    properties:
+      options: "Yes, No"
+      prompt: "\nAddress: ${selectedParkTitle} ${selectedParkDesc} \nSlot No.: Storey No. 6 \nCar Number: ${carNumber.value} \nCheck-in: ${checkIn.value} \n\nShould I go ahead and book?"
+      variable: "confirmYesNo"  
+
+  switchYesNo:
+    component: "System.Switch"
+    properties:
+      variable: "confirmYesNo"
+      values:
+      - "Yes"
+      - "No"
+    transitions:
+      actions:
+        Yes: "parkingSpaceBooked"
+        No: "thanksMessage"
+        NONE: "unresolved"       
+  parkingSpaceBooked:
+    component: "System.Output"
+    properties:
+      text: "Your booking for car parking space at BLK 478 YISHUN ST 42 is booked. \n\nNote: Please reach your packing space on time. Your space will be vacant till 30 min of your booking time"  
+      keepTurn: true
+    transitions: {}         
+  dispScanCode:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: false
+      keepTurn: true
+      metadata: 
+        responseItems:         
+        - type: "attachment" 
+          attachmentType: "image" 
+          attachmentTitle: "Scan this QR code at entrance" 
+          attachmentUrl: "https://i.pinimg.com/originals/6e/dc/13/6edc13e10768bf0efc27d499c108d5b5.jpg"     
+          footerText: "Scan this QR code at entrance"
+    transitions:
+      next: "thanksMessage"           
+  thanksMessage:
+    component: "System.Output"
+    properties:
+      text: "Thank you! Have a nice day!"
+    transitions:
+      return: "done"      
+  unresolved:
+    component: "System.Output"
+    properties:
+      text: "Sorry! I dont understand you!"
+    transitions:
+      return: "done"
+  paidParking:
+    component: "System.CommonResponse"
+    properties:
+      processUserMessage: false  
+      cancelPolicy: "immediate"
+      metadata: 
+        responseItems:                  
+        - type: "text"  
+          text: "${rb('ParkingTicket')}" 
+    transitions: 
+      return: "done"
+  paidParking1:
+    component: "System.Output"
+    properties:
+      text: "PAID PARKING \nDate: 07/06/2021 \n\nCheck-in: 07/06/2021 10:27 AM \nCheck-out: 07/06/2021 11:15 PM \nPaid: 5.00 \n\nThank you and Drive Safe \n\nNote: 5% off on using a electric car!!"
+    transitions:
+      return: "done"        

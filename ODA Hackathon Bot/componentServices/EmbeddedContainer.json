@@ -1,0 +1,14 @@
+{
+  "type" : "HOSTED",
+  "name" : "EmbeddedContainer",
+  "packageFileName" : "custom-component-srf-1.0.0.tgz",
+  "packageChecksum" : "46639d1ee9e507a6c6d6d69ca2ae38ce",
+  "runtime" : "node",
+  "status" : {
+    "code" : "created",
+    "message" : "The service is created but not ready."
+  },
+  "loggingEnabled" : false,
+  "enabled" : true,
+  "trackingId" : "c20e4f17-ce50-488e-837a-c76eb11430c6"
+}

@@ -1,0 +1,49 @@
+{
+  "name": "custom-component-srf",
+  "version": "1.0.0",
+  "description": "Simple Bots Custom Components in form of npm package",
+  "main": "main.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "http-auth": "^3.2.3",
+    "intl": "^1.2.5",
+    "log4js": "^1.1.1",
+    "moment": "^2.27.0",
+    "nodemailer": "^6.4.10",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  },
+  "scripts": {
+    "bots-node-sdk": "bots-node-sdk",
+    "start": "npm run bots-node-sdk -- service .",
+    "prepack": "npm run bots-node-sdk -- pack --dry-run ."
+  },
+  "devDependencies": {
+    "@oracle/bots-node-sdk": "^2.1.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "http-auth": "^3.2.3",
+    "intl": "^1.2.5",
+    "log4js": "^1.1.1",
+    "nodemailer": "^6.4.10",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  },
+  "bundledDependencies": [
+    "axios",
+    "body-parser",
+    "express",
+    "http",
+    "http-auth",
+    "intl",
+    "log4js",
+    "moment",
+    "nodemailer",
+    "path",
+    "request"
+  ]
+}

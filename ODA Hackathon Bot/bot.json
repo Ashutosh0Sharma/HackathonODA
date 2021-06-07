@@ -1,0 +1,14 @@
+{
+  "type" : "USER",
+  "trackingId" : "2FD2F03C-4152-4174-BE69-346C92DCB1F0",
+  "name" : "SmartParkYS",
+  "displayName" : "SmartParkYS",
+  "description" : "Bot for parking your vehicles, get available parking, book parking site, complaint if wrong parking\n",
+  "version" : "1.0",
+  "intentTrainer" : "Sakura",
+  "autoCompleteTrainingStatus" : "NO_DATA",
+  "requiresAutoCompleteTraining" : false,
+  "platformVersion" : "21.04",
+  "primaryLanguageTag" : "en",
+  "multilingualMode" : "NATIVE"
+}

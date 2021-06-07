@@ -1,0 +1,26 @@
+{
+  "settings" : {
+    "Multistage_Pipeline" : true,
+    "Verbose_Output" : false,
+    "Result_Size" : 10,
+    "Pipeline_Output_Size" : 100,
+    "botConfig" : [ {
+      "displayName" : "Confidence Threshold",
+      "name" : "system.intentConfidenceThreshold",
+      "description" : "The minimum confidence score required to match a skill's intent with user input. If there is no match, the transition action is set to 'unresolvedIntent'.(Minimum value 0, maximum value 1)",
+      "type" : "float",
+      "value" : 0.5
+    }, {
+      "displayName" : "Unexpected Error Prompt",
+      "name" : "system.errorUnexpectedErrorPrompt",
+      "description" : "The message when there is an unexpected error",
+      "type" : "string",
+      "value" : "Oops! I am facing a technical error at the moment. Please try again later."
+    } ]
+  },
+  "conversationHistoryEnabled" : false,
+  "insightsEnabled" : true,
+  "intentResultHistoryEnabled" : false,
+  "qnAResultHistoryEnabled" : false,
+  "trackingId" : "2FD2F03C-4152-4174-BE69-346C92DCB1F0"
+}

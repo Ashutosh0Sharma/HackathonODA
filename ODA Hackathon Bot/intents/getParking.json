@@ -1,0 +1,115 @@
+{
+  "name" : "getParking",
+  "type" : "NLPIntent",
+  "trackingId" : "C916C8FB-1464-4B5A-A749-27D2FBB9DAF9",
+  "enabled" : true,
+  "intentParameters" : [ {
+    "name" : "VEHICLE_TYPE",
+    "required" : true,
+    "entity" : "VEHICLE_TYPE",
+    "trackingId" : "721DFAE2-DA70-493F-A2F9-43AFD417A284"
+  } ],
+  "exampleData" : [ {
+    "sentence" : "i want to book a parking slot",
+    "trackingId" : "C47519BC-11A0-4530-B5B9-6E98D07B2C35",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "find me a parking slot",
+    "trackingId" : "369B2580-8328-44B8-99E8-9E124A9973FE",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "i am looking for a cark parking space",
+    "trackingId" : "76E5E38B-878D-4C0F-A049-8E23E2C14F9E",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "i want to park my car",
+    "trackingId" : "DF429F30-70DA-4523-A4F5-2E1DF2A0E2C0",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "how do i find a parking space",
+    "trackingId" : "F9422103-3331-4A42-8D20-88FAB3FDDF68",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "where can i park my car",
+    "trackingId" : "6B03B2CB-D42C-4842-B0A3-FCC80D4CC04A",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "need a parking space",
+    "trackingId" : "B52BCE08-185D-4993-AB82-3685428DCA7B",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  } ],
+  "autoCompleteData" : [ {
+    "sentence" : "MyTestUser",
+    "trackingId" : "E1B30C73-7A8F-4B70-89E3-915C5ABE2FE4",
+    "nativeLanguageTag" : "en",
+    "detectedLanguage" : null
+  }, {
+    "sentence" : "MyTestUser",
+    "trackingId" : "67718089-BBE7-40A3-9415-AC0E975BEA49",
+    "nativeLanguageTag" : "en",
+    "detectedLanguage" : null
+  } ]
+}

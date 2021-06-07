@@ -1,0 +1,41 @@
+{
+  "languageTag" : "default",
+  "keys" : {
+    "systemFlowName_getParking" : {
+      "message" : "getParking",
+      "extensionType" : null,
+      "trackingId" : "C8AB6B13-6894-4424-93EC-A801753C4BBA",
+      "annotation" : null
+    },
+    "systemFlowName_wrongParkingComplaint" : {
+      "message" : "wrongParkingComplaint",
+      "extensionType" : null,
+      "trackingId" : "4F3BB3C8-40ED-446E-A532-007640C12346",
+      "annotation" : null
+    },
+    "systemFlowName_greeting" : {
+      "message" : "greeting",
+      "extensionType" : null,
+      "trackingId" : "31F98BB7-0750-406D-A314-B6EC72F40C57",
+      "annotation" : null
+    },
+    "CALENDAR" : {
+      "message" : "<div><b style=\"width:100%; text-align:center;display: inline-block;\">Please Select Check-in time</b><br><input id=\"selectedDate\" name=\"selectedDate\" type=\"datetime-local\" style=\"height: 27px;margin-top: 10px;\"><br><input class=\"oda-chat-action-postback\" value=\"Submit\" type=\"button\" style=\"color: #FFF !important;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 11px;margin-left: 20%;margin-top: 13px;cursor: pointer;background-color: #d0224a;color: #FFF !important;border: 0px solid #006;border-radius: 15px;transition: border-color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;font-weight: 700;width: 100px;\" onclick=\"var selectedDate = document.querySelectorAll('[id=\\'selectedDate\\']'); Bots.sendMessage({ 'messagePayload' :{ 'postback': { 'variables': { 'selectedDate': selectedDate[selectedDate.length-1].value }, 'action': 'submitDate' }, 'text': 'Submit My Date', 'type': 'postback' }}, {hidden: true });var selectedDate = document.getElementById('selectedDate'); selectedDate.disabled = true;\"></div>",
+      "extensionType" : null,
+      "trackingId" : "74EBC857-BB4F-44F9-8A87-3E85FBC87C55",
+      "annotation" : null
+    },
+    "ParkingTicket" : {
+      "message" : "<div style=\"display: grid;\">\n    <img src = \"https://www.iconpacks.net/icons/2/free-parking-sign-icon-1641-thumb.png\" width=\"50px\" height=\"50px\">\n    <b>--------------------------------------------</b>\n    <b style=\"width:100%; text-align:center;display: inlineblock;\">PAID PARKING</b>\n    <b style=\"width:100%; text-align:center;display: inlineblock;\">Date: 07/06/2021 </b>\n\n    <b style=\"width:100%; text-align:center;display: inlineblock;\">Check-in: 07/06/2021 10:27 AM </b>\n    <b style=\"width:100%; text-align:center;display: inlineblock;\">Check-out: 07/06/2021 11:15 PM </b>\n    <b style=\"width:100%; text-align:center;display: inlineblock;\">Paid: 5.00 </b>\n    <b>--------------------------------------------</b>\n    <img src=\"https://www.freepnglogos.com/uploads/barcode-png/barcode-scanning-solutions-for-dynamics-nav-dynamics-19.png\" width=\"220px\" height=\"50px\">\n    <br>\n    <b style=\"width:100%; text-align:center;display: inlineblock;\">Note: 5% off on using a electric car!!</b>\n</div>\n",
+      "extensionType" : null,
+      "trackingId" : "2F37A7C4-0CA9-46E5-B289-511E6189ADAA",
+      "annotation" : null
+    },
+    "CALENDAR2" : {
+      "message" : "<div><b style=\"width:100%; text-align:center;display: inline-block;\">Please Select Check-out time</b><br><input id=\"selectedDate1\" name=\"selectedDate1\" type=\"datetime-local\" style=\"height: 27px;margin-top: 10px;\"><br><input class=\"oda-chat-action-postback\" value=\"Submit\" type=\"button\" style=\"color: #FFF !important;padding: 8px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 11px;margin-left: 20%;margin-top: 13px;cursor: pointer;background-color: #d0224a;color: #FFF !important;border: 0px solid #006;border-radius: 15px;transition: border-color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;font-weight: 700;width: 100px;\" onclick=\"var selectedDate1 = document.querySelectorAll('[id=\\'selectedDate1\\']'); Bots.sendMessage({ 'messagePayload' :{ 'postback': { 'variables': { 'selectedDate1': selectedDate1[selectedDate1.length-1].value }, 'action': 'submitDate' }, 'text': 'Submit My Date', 'type': 'postback' }}, {hidden: true });var selectedDate1 = document.getElementById('selectedDate1'); selectedDate1.disabled = true;\"></div>",
+      "extensionType" : null,
+      "trackingId" : "74EBC857-BB4F-44F9-8A87-3E85FBC87C55",
+      "annotation" : null
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type" : "CUSTOM",
+  "name" : "NgrokTest",
+  "version" : "1.1",
+  "url" : "https://f1d59de2319d.ngrok.io/components",
+  "headers" : [ ],
+  "credentials" : {
+    "type" : "basic",
+    "username" : "MyTestUser"
+  },
+  "enabled" : false,
+  "trackingId" : "EAA3F291-012D-4B1B-BEF6-B60B43D0D29C"
+}

@@ -1,0 +1,38 @@
+{
+  "name" : "VEHICLE_TYPE",
+  "type" : "ENUMVALUES",
+  "enumValues" : [ {
+    "type" : "StaticEntityValue",
+    "trackingId" : "64E5179E-DF79-4C9F-ADB7-C38FD293339F",
+    "canonicalName" : "SUV",
+    "synonyms" : [ "suv" ],
+    "extensionType" : null,
+    "primaryLanguageCanonicalName" : "SUV",
+    "nativeLanguageTag" : "en"
+  }, {
+    "type" : "StaticEntityValue",
+    "trackingId" : "3B542666-27C8-4DC4-BAFE-B2DDF7E32B80",
+    "canonicalName" : "Hatchback",
+    "synonyms" : [ "hatchback" ],
+    "extensionType" : null,
+    "primaryLanguageCanonicalName" : "Hatchback",
+    "nativeLanguageTag" : "en"
+  }, {
+    "type" : "StaticEntityValue",
+    "trackingId" : "694AF79B-8975-4210-8DC5-19918D2EBA72",
+    "canonicalName" : "SEDAN",
+    "synonyms" : [ "sedan" ],
+    "extensionType" : null,
+    "primaryLanguageCanonicalName" : "SEDAN",
+    "nativeLanguageTag" : "en"
+  } ],
+  "multiValue" : false,
+  "fuzzyMatch" : false,
+  "promptForDisambiguation" : true,
+  "botPrompts" : [ {
+    "text" : "Please enter VEHICLE_TYPE",
+    "sequenceNr" : null
+  } ],
+  "validationRules" : [ ],
+  "trackingId" : "E2C52F7A-F440-4436-9698-53173E658225"
+}

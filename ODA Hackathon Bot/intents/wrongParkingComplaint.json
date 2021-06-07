@@ -1,0 +1,61 @@
+{
+  "name" : "wrongParkingComplaint",
+  "type" : "NLPIntent",
+  "trackingId" : "5C067B56-EC84-46FE-8D85-6CB6DD239DC7",
+  "enabled" : true,
+  "intentParameters" : [ ],
+  "exampleData" : [ {
+    "sentence" : "car parking is incorrect",
+    "trackingId" : "3ABE6A5C-0ED5-468C-BB38-D6CC9265F319",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "query in car parking",
+    "trackingId" : "174AE01B-F78F-42AB-87CF-CB1DD371F92E",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "wrong car parking",
+    "trackingId" : "34187504-033C-4F9A-AF72-765BE358059B",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  }, {
+    "sentence" : "I want to raise a query related to car parking",
+    "trackingId" : "FDDF0414-D5AF-42EC-8121-8EF15FD1E051",
+    "nativeLanguageTag" : "en",
+    "translated" : null,
+    "detectedLanguage" : null,
+    "translatedLanguage" : null,
+    "translatedBy" : null,
+    "crowdJobId" : null,
+    "contributor" : null,
+    "developerId" : null,
+    "developerTag" : null,
+    "exampleEntities" : [ ]
+  } ],
+  "autoCompleteData" : [ ]
+}

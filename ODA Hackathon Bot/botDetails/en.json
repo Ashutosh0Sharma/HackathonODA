@@ -1,0 +1,8 @@
+{
+  "invocationName" : "SmartPark",
+  "shortDescription" : "Bot for parking your vehicles, get available parking, book parking site, complaint if wrong parking\n",
+  "fullDescription" : null,
+  "trackingId" : "1126A39B-5554-44A2-BFB9-EC5C0DAA9B2C",
+  "sampleInvocations" : [ "An example utterance" ],
+  "nativeLanguageTag" : "en"
+}
